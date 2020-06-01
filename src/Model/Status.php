@@ -16,22 +16,23 @@ class Status
         Status::DONE,
     ];
 
-    public function __construct(string $name)
-    {
-        if (!$this->validate($name)) {
-            throw new \InvalidArgumentException("Wrong status name");
-        }
-
-        $this->name = $name;
-    }
-
     public function validate(string $name) : bool
     {
         return in_array($name, $this->types);
+    }
+
+    public function setName(string $value)
+    {
+        if (!$this->validate($value)) {
+            throw new \InvalidArgumentException("Wrong status name");
+        }
+
+        $this->name = $value;
     }
     
     public function getName() : string
     {
         return $this->name;
     }
+
 }

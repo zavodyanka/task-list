@@ -10,8 +10,9 @@ class StatusTest extends TestCase
 {
     public function testCorrectStatusName()
     {
-        $name = Status::NEW;
-        $status = new Status($name);
+        $name = 'new';
+        $status = new Status();
+        $status->setName($name);
 
         $this->assertEquals($name, $status->getName());
     }
@@ -21,6 +22,7 @@ class StatusTest extends TestCase
         $this->expectException(\InvalidArgumentException::class);
         
         $name = 'in progress';
-        $status = new Status($name);
+        $status = new Status();
+        $status->setName($name);
     }
 }
